@@ -37,9 +37,7 @@ fun part1(locations: Locations): Int =
 fun nrOccurrences(i: Int, l: List<Int>) = l.count { it == i }
 
 fun similarityScore(locations: Locations): Int =
-    locations.left
-        .map { left -> left * nrOccurrences(left, locations.right) }
-        .sum()
+    locations.left.sumOf { left -> left * nrOccurrences(left, locations.right) }
 
 fun part2(locations: Locations): Int = similarityScore(locations)
 
