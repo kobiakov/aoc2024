@@ -1,6 +1,5 @@
 package nl.kobiakov.aoc2024.day03
 
-import nl.kobiakov.aoc2024.debug
 import nl.kobiakov.aoc2024.solveDay
 
 typealias Mul = Pair<Int, Int>
@@ -22,6 +21,6 @@ fun removeDisabled(s: String): String =
     else
         removeDisabled(s.removeRange(s.indexOf("don't()"), s.indexOf("do()", startIndex = s.indexOf("don't()"))))
 
-fun part2(s: String) = processInput(debug(removeDisabled(s))).sumOf { it.first * it.second }
+fun part2(s: String) = processInput(removeDisabled(s)).sumOf { it.first * it.second }
 
 fun main() = solveDay(3, partOne = ::part1, partTwo = ::part2)
