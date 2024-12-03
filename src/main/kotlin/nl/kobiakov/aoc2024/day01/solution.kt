@@ -1,6 +1,6 @@
 package nl.kobiakov.aoc2024.day01
 
-import nl.kobiakov.aoc2024.loadDay
+import nl.kobiakov.aoc2024.solveDay
 import java.util.regex.Pattern
 import kotlin.math.abs
 
@@ -17,7 +17,7 @@ data class Locations(val left: List<Int>, val right: List<Int>) {
     }
 }
 
-fun loadInput(s: String): Locations =
+fun processInput(s: String): Locations =
     s.splitToSequence("\n")
         .map(::stringToPairOfLocations)
         .fold(Locations.EMPTY) { acc, pair -> acc + pair }
@@ -43,7 +43,4 @@ fun similarityScore(locations: Locations): Int =
 
 fun part2(locations: Locations): Int = similarityScore(locations)
 
-fun main() = with(loadInput(loadDay(1))) {
-    println("part1: ${part1(this)}")
-    println("part2: ${part2(this)}")
-}
+fun main() = solveDay(1, ::processInput, ::part1, ::part2)

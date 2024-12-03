@@ -1,6 +1,6 @@
 package nl.kobiakov.aoc2024.day02
 
-import nl.kobiakov.aoc2024.loadDay
+import nl.kobiakov.aoc2024.solveDay
 import kotlin.math.abs
 
 typealias Level = Int
@@ -26,14 +26,11 @@ fun isSafeWithoutOneLevel(report: Report): Boolean =
         .map { elementIndexToTryWithout -> report.filterIndexed { index, _ -> index != elementIndexToTryWithout } }
         .any(::isSafe)
 
-fun loadInput(s: String): Reports =
+fun processInput(s: String): Reports =
     s.split("\n").map { line -> line.split(" ").map { it.toInt() } }
 
 fun part1(reports: Reports): Int = reports.count(::isSafe)
 
 fun part2(reports: Reports): Int = reports.count(::isSafeWithoutOneLevel)
 
-fun main() = with(loadInput(loadDay(2))) {
-    println("part1: ${part1(this)}")
-    println("part2: ${part2(this)}")
-}
+fun main() = solveDay(2, ::processInput, ::part1, ::part2)

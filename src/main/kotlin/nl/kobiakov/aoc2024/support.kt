@@ -7,6 +7,23 @@ fun readResourceFile(fileName: String): String =
 
 fun loadDay(dayNr: Int) = readResourceFile("day${String.format("%02d", dayNr)}.txt").trimEnd()
 
+fun <T> solveDay(
+    dayNr: Int,
+    inputProcessor: (String) -> T,
+    partOne: (T) -> Any = { "yet to be solved" },
+    partTwo: (T) -> Any = { "yet to be solved" }
+) =
+    with(inputProcessor(loadDay(dayNr))) {
+        println("Part 1: ${partOne(this)}")
+        println("Part 2: ${partTwo(this)}")
+    }
+
+fun solveDay(
+    dayNr: Int,
+    partOne: (String) -> Any = { "yet to be solved" },
+    partTwo: (String) -> Any = { "yet to be solved" }
+) = solveDay(dayNr, { it },  partOne, partTwo)
+
 fun <T> debug(v: T, label: String = ""): T {
     println("debug ($label): $v")
     return v
