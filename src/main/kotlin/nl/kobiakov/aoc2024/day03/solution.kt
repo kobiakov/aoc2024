@@ -11,7 +11,7 @@ fun processInput(s: String): List<Mul> =
         .filter { it.size == 2 && isNumber(it[0]) && isNumber(it[1]) }
         .map { Pair(it[0].toInt(), it[1].toInt()) }
 
-fun isNumber(s: String): Boolean = s.all { it.isDigit() }
+fun isNumber(s: String): Boolean = s.all { it.isDigit() } && s.length in 1..3
 
 fun part1(s: String) = processInput(s).sumOf { it.first * it.second }
 
